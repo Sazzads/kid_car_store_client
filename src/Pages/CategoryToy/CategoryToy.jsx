@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CategoryToyCard from './CategoryToyCard';
-// import './CategoryToy.css'
 
 
 const CategoryToy = () => {
