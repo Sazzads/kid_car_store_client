@@ -130,8 +130,7 @@ const Home = () => {
                                     <label className="label">
                                         <span className="label-text">Message</span>
                                     </label>
-                                    <input type="text" placeholder="Message" className="input input-bordered" />
-
+                                    <textarea className="textarea textarea-bordered" placeholder="Message"></textarea>
                                 </div>
                                 <div className="form-control mt-6">
                                     <button className="btn btn-primary">Send</button>
