@@ -14,7 +14,7 @@ fetch(`http://localhost:5000/mytoys/${user?.email}`)
     }, [user])
     return (
         <div className='max-w-7xl mx-auto'>
-            <h2 className='text-center text-6xl font-bold my-10'>All Toys</h2>
+            <h2 className='text-center text-6xl font-bold my-10'>My Toys</h2>
             <div>
 
             </div>
