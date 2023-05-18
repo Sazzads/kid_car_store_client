@@ -6,6 +6,7 @@ import banner4 from '../../assets/banner4.jpeg'
 import offerPic from '../../assets/offer.png'
 
 import Gallary from './Gallary';
+import CategoryToy from '../CategoryToy/CategoryToy';
 // bg-gradient-to-r from-[#151515] to-[rgba(21,21,21, 0)]
 // max-w-7xl mx-auto
 const Home = () => {
@@ -87,7 +88,7 @@ const Home = () => {
             <div className='max-w-7xl mx-auto'>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row">
-                        <img src={offerPic} className="max-w-sm rounded-lg shadow-2xl" />
+                        <img src={offerPic} className="max-w-sm w-3/4 rounded-lg shadow-2xl" />
                         <div>
                             <h1 className="text-5xl font-bold">Check Out Our Irresistible Offer on Kid Car Toys!</h1>
                             <p className="py-6">Rev Up the Savings: Discover Amazing Deals and Special Offers on Kid Car Toys that will Thrill Young Drivers!</p>
@@ -100,12 +101,15 @@ const Home = () => {
             {/* offer section  */}
             {/* toys section start  */}
             <div className='max-w-7xl mx-auto'>
-
+                <h3 className='text-5xl text-center font-bold mt-5'>Shop by category</h3>
+                <p className='text-center my-5'>here you can see all sub category of Toy car for your kids</p>
+                <CategoryToy></CategoryToy>
             </div>
             {/* toys section end  */}
             {/* contact us section  */}
             <div className='max-w-7xl mx-auto'>
                 <div className="divider"></div>
+                
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <div className="text-center lg:text-left">
