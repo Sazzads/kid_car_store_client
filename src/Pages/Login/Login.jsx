@@ -3,6 +3,7 @@ import pic from '../../assets/login.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useState } from 'react';
+import PageTitle from '../PageTitle/PageTitle';
 
 const Login = () => {
     const { signIn, createUserGoogle } = useContext(AuthContext);
@@ -51,6 +52,7 @@ const Login = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200">
+            <PageTitle title="Login"></PageTitle>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="ml-12 w-1/2">
 

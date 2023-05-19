@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import PageTitle from '../PageTitle/PageTitle';
 
 const SingleToyDetails = () => {
     const toy = useLoaderData();
@@ -7,6 +8,7 @@ const SingleToyDetails = () => {
     // console.log(object);
     return (
         <div>
+            <PageTitle title="Details Toy"></PageTitle>
             <h2 className='bg-base-200 text-5xl font-bold text-center pt-10 p-0'>{name}</h2>
             <div className="hero min-h-screen bg-base-200">
                 

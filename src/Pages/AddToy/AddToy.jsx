@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import toypic from '../../assets/toy.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import PageTitle from '../PageTitle/PageTitle';
 
 const AddToy = () => {
     const { user } = useContext(AuthContext);
@@ -22,6 +23,7 @@ const AddToy = () => {
     }
     return (
         <div>
+            <PageTitle title="Add Toy"></PageTitle>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
 

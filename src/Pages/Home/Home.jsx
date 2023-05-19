@@ -7,11 +7,13 @@ import offerPic from '../../assets/offer.png'
 
 import Gallary from './Gallary';
 import CategoryToy from '../CategoryToy/CategoryToy';
+import PageTitle from '../PageTitle/PageTitle';
 // bg-gradient-to-r from-[#151515] to-[rgba(21,21,21, 0)]
 // max-w-7xl mx-auto
 const Home = () => {
     return (
         <div className=''>
+            <PageTitle title="Home"></PageTitle>
             {/* banner start  */}
             <div className="carousel w-full h-[650px]">
                 <div id="slide1" className="carousel-item relative w-full ">

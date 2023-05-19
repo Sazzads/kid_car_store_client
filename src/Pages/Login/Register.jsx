@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import pic from '../../assets/registation.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import PageTitle from '../PageTitle/PageTitle';
 
 const Register = () => {
     const { creteUser, createUserGoogle, updateUserProfile, done } = useContext(AuthContext)
@@ -57,6 +58,7 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <PageTitle title="Register"></PageTitle>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="ml-12 w-1/2">
 

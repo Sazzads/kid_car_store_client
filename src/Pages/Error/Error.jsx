@@ -1,10 +1,12 @@
 import React from 'react';
 import errorPic from '../../assets/error.png'
 import { Link } from 'react-router-dom';
+import PageTitle from '../PageTitle/PageTitle';
 
 const Error = () => {
     return (
         <div className='my-10'>
+            <PageTitle title="Error"></PageTitle>
             <div className='text-center'>
                 <h1 className='text-7xl font-bold text-red-500'>4O4</h1>
                 <p className='text-gray-700'>LOST IN  <Link to='/' className='text-blue-400'>Kid Car Store</Link>? Hmm, <br /> looks like that page doesn't exist.</p>

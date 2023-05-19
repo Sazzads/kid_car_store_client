@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import UpdateMyToy from './UpdateMyToy';
+import PageTitle from '../PageTitle/PageTitle';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -50,6 +51,7 @@ const MyToys = () => {
 
     return (
         <div className='max-w-7xl mx-auto'>
+            <PageTitle title="My Toy"></PageTitle>
             <h2 className='text-center text-6xl font-bold my-10'>My Toys</h2>
 
             <button onClick={handleAscinding} className='border py-2 px-4 m-2 bg-gray-500 hover:bg-black hover:text-white rounded-lg '>Ascinding</button>

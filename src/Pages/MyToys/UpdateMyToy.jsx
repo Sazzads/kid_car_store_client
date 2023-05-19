@@ -4,6 +4,7 @@ import toypic from '../../assets/toy.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
+import PageTitle from '../PageTitle/PageTitle';
 
 const UpdateMyToy = () => {
     const { user } = useContext(AuthContext);
@@ -26,7 +27,7 @@ const UpdateMyToy = () => {
     }
     return (
         <div>
-            
+            <PageTitle title="Update Toy"></PageTitle>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
 

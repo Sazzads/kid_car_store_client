@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PageTitle from '../PageTitle/PageTitle';
 
 const AllToys = () => {
     const [allToys, setAllToys] = useState([])
@@ -24,6 +25,7 @@ const AllToys = () => {
     }
     return (
         <div className='max-w-7xl mx-auto'>
+            <PageTitle title="All Toys"></PageTitle>
             <h2 className='text-center text-6xl font-bold mt-10'>AllToys</h2>
             <div className="text-right my-5">
                 <input
