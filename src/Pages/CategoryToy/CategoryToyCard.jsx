@@ -5,7 +5,7 @@ const CategoryToyCard = ({ toy }) => {
     return (
         <div>
             <div className="card card-compact w-full bg-base-100 shadow-xl">
-                <figure><img src={toy?.pictureUrl} alt="picture" /></figure>
+                <figure><img className='w-1/2' src={toy?.pictureUrl} alt="picture" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{toy.name}!</h2>
                     <p>Price: {toy.price}</p>

@@ -48,6 +48,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setSuccess("REGISTER COMPLETE SUCCESSFULLY");
 
             })
             .catch(error => {

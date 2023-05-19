@@ -10,7 +10,7 @@ const UpdateMyToy = () => {
     const { user } = useContext(AuthContext);
     const toy=useLoaderData();
     
-    const {_id,name,price,quantity,description}=toy[0]
+    const {_id,name,price,quantity,description,pictureUrl}=toy[0]
    
     const { register, handleSubmit, watch, formState: { errors } } = useForm(); 
     const onSubmit = data => {
@@ -36,7 +36,7 @@ const UpdateMyToy = () => {
                             <div className="">
                                 <h1 className="text-5xl font-bold text-center">Update toy</h1>
                                
-                                <img src={toypic} alt="" />
+                                <img className='w-1/2 mx-auto mt-5' src={pictureUrl} alt="" />
                             </div>
                             <form onSubmit={handleSubmit(onSubmit)}>
 

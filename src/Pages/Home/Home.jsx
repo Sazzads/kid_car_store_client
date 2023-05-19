@@ -15,7 +15,7 @@ const Home = () => {
         <div className=''>
             <PageTitle title="Home"></PageTitle>
             {/* banner start  */}
-            <div className="carousel w-full h-[650px]">
+            <div className="carousel w-full h-[750px]">
                 <div id="slide1" className="carousel-item relative w-full ">
                     <>
                         <img src={banner1} className="w-full " />
@@ -104,7 +104,7 @@ const Home = () => {
             {/* offer section  */}
             {/* toys section start  */}
             <div className='max-w-7xl mx-auto'>
-                <h3 className='text-5xl text-center font-bold mt-5'>Shop by category</h3>
+                <h3 className='text-5xl text-center font-bold mt-5'>Car Toy Shop</h3>
                 <p className='text-center my-5'>here you can see all sub category of Toy car for your kids</p>
                 <CategoryToy></CategoryToy>
             </div>
