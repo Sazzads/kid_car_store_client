@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import pic from '../../assets/login.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useState } from 'react';
 
 const Login = () => {
     const { signIn, createUserGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const [error, setError] = useState("")
     const [errorAuth, setErrorAuth] = useState("")
     const handleLogin = (event) => {
@@ -25,7 +28,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error.message);
@@ -39,7 +42,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
 
             })
             .catch(error => {
