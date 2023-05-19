@@ -88,7 +88,8 @@ const Home = () => {
             <div className='max-w-7xl mx-auto'>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row">
-                        <img src={offerPic} className="max-w-sm w-3/4 rounded-lg shadow-2xl" />
+                        <img src={offerPic} data-aos="zoom-in-down"
+                data-aos-duration="1000" className="max-w-sm w-3/4 rounded-lg shadow-2xl" />
                         <div>
                             <h1 className="text-5xl font-bold">Check Out Our Irresistible Offer on Kid Car Toys!</h1>
                             <p className="py-6">Rev Up the Savings: Discover Amazing Deals and Special Offers on Kid Car Toys that will Thrill Young Drivers!</p>

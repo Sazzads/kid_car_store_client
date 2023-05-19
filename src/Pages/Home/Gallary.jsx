@@ -12,7 +12,8 @@ const Gallary = () => {
 
             <div className="grid grid-cols-6 md:grid-cols-9 gap-1 ">
                 {
-                    gallaries.map(data => <div key={data.id} className="card w-full bg-base-100 rounded-lg shadow-xl">
+                    gallaries.map(data => <div data-aos="flip-right"
+                    data-aos-duration="1000" key={data.id} className="card w-full bg-base-100 rounded-lg shadow-xl">
                         <div className=" rounded-lg">
                             <img className='rounded-lg' src={data.image} alt="" />
                         </div>
