@@ -11,7 +11,7 @@ const CategoryToyCard = ({ toy }) => {
                     <p>Price: {toy.price}</p>
                     <p>rating: {toy.rating}</p>
                     <div className="card-actions justify-end">
-                        <Link className='btn' to={`/singletoydetail/${toy._id}`}>View Details</Link>
+                        <Link className='btn' to={`/toy/${toy._id}`}>View Details</Link>
                     </div>
                 </div>
             </div>
