@@ -31,6 +31,10 @@ const MyToys = () => {
             // console.log(id);
         }
     }
+
+    const handleToyConfirm = (id) => {
+        
+    }
     return (
         <div className='max-w-7xl mx-auto'>
             <h2 className='text-center text-6xl font-bold my-10'>My Toys</h2>
@@ -62,7 +66,7 @@ const MyToys = () => {
                                 <td>{toy?.category}</td>
                                 <td>{toy?.price}</td>
                                 <td>{toy?.quantity}</td>
-                                <td><Link className='btn' to='/updatemytoy'>Update</Link> </td>
+                                <td><Link className='btn' to={`/updatemytoy/${toy._id}`}>Update</Link> </td>
                                 <td onClick={() => handleDelete(toy._id)}><button className='btn'>X</button></td>
                             </tr>
                         </tbody>)

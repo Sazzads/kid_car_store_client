@@ -3,15 +3,18 @@ import { useForm } from "react-hook-form";
 import toypic from '../../assets/toy.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import { useLoaderData } from 'react-router-dom';
 
-const UpdateMyToy = ({toy}) => {
+const UpdateMyToy = () => {
     const { user } = useContext(AuthContext);
+    const toy=useLoaderData();
     
-
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const {_id,name,price,quantity,description}=toy[0]
+   
+    const { register, handleSubmit, watch, formState: { errors } } = useForm(); 
     const onSubmit = data => {
-        fetch("http://localhost:5000/postToy", {
-            method: "POST",
+        fetch(`http://localhost:5000/mytoy/${_id}`, {
+            method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
         })
@@ -23,6 +26,7 @@ const UpdateMyToy = ({toy}) => {
     }
     return (
         <div>
+            
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
 
@@ -30,6 +34,7 @@ const UpdateMyToy = ({toy}) => {
                         <div className="card-body">
                             <div className="">
                                 <h1 className="text-5xl font-bold text-center">Update toy</h1>
+                               
                                 <img src={toypic} alt="" />
                             </div>
                             <form onSubmit={handleSubmit(onSubmit)}>
@@ -38,67 +43,39 @@ const UpdateMyToy = ({toy}) => {
                                     <label className="label">
                                         <span className="label-text">Toy Name</span>
                                     </label>
-                                    <input type="text" {...register("name")} placeholder="name" className="input input-bordered" />
+                                    <input type="text" value={name}  className="input input-bordered" disabled/>
                                 </div>
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Picture URL</span>
-                                    </label>
-                                    <input type="text" {...register("pictureUrl")} placeholder="picture url" className="input input-bordered" />
-                                </div>
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Seller name</span>
-                                    </label>
-                                    <input type="text" {...register("sellerName")} placeholder="Seller name" className="input input-bordered" />
-                                </div>
 
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Seller Email</span>
                                     </label>
-                                    {user && <input className="input input-bordered" value={user?.email}  {...register("email")} />}
+                                    {user && <input className="input input-bordered" value={user?.email} disabled/>}
                                 </div>
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Sub Category</span>
-                                    </label>
-                                    <select className="input input-bordered" {...register("category")}>
-                                        <option value="bus">bus</option>
-                                        <option value="car">car</option>
-                                        <option value="truck">truck</option>
-                                    </select>
-                                </div>
 
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Price</span>
                                     </label>
-                                    <input type="number" {...register("price")} placeholder="Price" className="input input-bordered" />
+                                    <input type="number" defaultValue={price} {...register("price")} placeholder="Price" className="input input-bordered" />
                                 </div>
 
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Quantity</span>
                                     </label>
-                                    <input type="number" {...register("quantity")} placeholder="Quantity" className="input input-bordered" />
+                                    <input type="number" defaultValue={quantity} {...register("quantity")} placeholder="Quantity" className="input input-bordered" />
                                 </div>
 
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Rating</span>
-                                    </label>
-                                    <input type="number" {...register("rating")} placeholder="Rating" className="input input-bordered" />
-                                </div>
 
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Description</span>
                                     </label>
-                                    <input type="text" {...register("description")} placeholder="Description" className="input input-bordered" />
+                                    <input  type="text" {...register("description")} placeholder="Description" className="input input-bordered" />
                                 </div>
 
                                 <div className="form-control mt-6">
