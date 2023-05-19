@@ -31,20 +31,36 @@ const MyToys = () => {
             // console.log(id);
         }
     }
-
-    const handleToyConfirm = (id) => {
-        
+    //ascinding sort
+    const handleAscinding = () => {
+        fetch(`http://localhost:5000/mytoyascending/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setToys(data);
+            })
     }
+    //Descending sort
+    const handleDescending = () => {
+        fetch(`http://localhost:5000/mytoydescending/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setToys(data);
+            })
+    }
+
     return (
         <div className='max-w-7xl mx-auto'>
             <h2 className='text-center text-6xl font-bold my-10'>My Toys</h2>
-            <div>
 
-            </div>
+            <button onClick={handleAscinding} className='border py-2 px-4 m-2 bg-gray-500 hover:bg-black hover:text-white rounded-lg '>Ascinding</button>
+            <button onClick={handleDescending} className='border py-2 px-4 m-2 bg-gray-500 hover:bg-black hover:text-white rounded-lg '>Descending</button>
+           
 
 
             <div className="overflow-x-auto mb-5">
+
                 <table className="table table-zebra w-full">
+
 
                     <thead>
                         <tr>
