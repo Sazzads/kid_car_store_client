@@ -20,9 +20,9 @@ const CategoryToy = () => {
         setActiveTab(tabName);
     };
     return (
-        <div>
-            <Tabs>
-                <TabList>
+        <div >
+            <Tabs >
+                <TabList >
                     <Tab onClick={() => handleTabClick("bus")} className={`tab activeTab = "bus"`}>bus</Tab>
                     <Tab onClick={() => handleTabClick("car")} className={`tab activeTab = "car"`}>car</Tab>
                     <Tab onClick={() => handleTabClick("truck")} className={`tab activeTab = "truck`}>truck</Tab>

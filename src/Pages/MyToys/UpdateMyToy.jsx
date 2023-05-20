@@ -5,25 +5,46 @@ import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
+import Swal from 'sweetalert2';
 
 const UpdateMyToy = () => {
     const { user } = useContext(AuthContext);
-    const toy=useLoaderData();
-    
-    const {_id,name,price,quantity,description,pictureUrl}=toy[0]
-   
-    const { register, handleSubmit, watch, formState: { errors } } = useForm(); 
+    const toy = useLoaderData();
+
+    const { _id, name, price, quantity, description, pictureUrl } = toy[0]
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
-        fetch(`https://server-site-pi.vercel.app/mytoy/${_id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-            })
+
         console.log(data);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://server-site-pi.vercel.app/mytoy/${_id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result);
+                        Swal.fire(
+                            'Updated!',
+                            'Your Toy Information has been Updated.',
+                            'success'
+                        )
+                    })
+
+            }
+        })
+
     }
     return (
         <div>
@@ -35,7 +56,7 @@ const UpdateMyToy = () => {
                         <div className="card-body">
                             <div className="">
                                 <h1 className="text-5xl font-bold text-center">Update toy</h1>
-                               
+
                                 <img className='w-1/2 mx-auto mt-5' src={pictureUrl} alt="" />
                             </div>
                             <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,7 +65,7 @@ const UpdateMyToy = () => {
                                     <label className="label">
                                         <span className="label-text">Toy Name</span>
                                     </label>
-                                    <input type="text" value={name}  className="input input-bordered" disabled/>
+                                    <input type="text" value={name} className="input input-bordered" disabled />
                                 </div>
 
 
@@ -53,7 +74,7 @@ const UpdateMyToy = () => {
                                     <label className="label">
                                         <span className="label-text">Seller Email</span>
                                     </label>
-                                    {user && <input className="input input-bordered" value={user?.email} disabled/>}
+                                    {user && <input className="input input-bordered" value={user?.email} disabled />}
                                 </div>
 
 
@@ -76,7 +97,7 @@ const UpdateMyToy = () => {
                                     <label className="label">
                                         <span className="label-text">Description</span>
                                     </label>
-                                    <input  type="text" {...register("description")} placeholder="Description" className="input input-bordered" />
+                                    <input type="text" {...register("description")} placeholder="Description" className="input input-bordered" />
                                 </div>
 
                                 <div className="form-control mt-6">

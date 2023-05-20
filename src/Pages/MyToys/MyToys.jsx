@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
-import UpdateMyToy from './UpdateMyToy';
 import PageTitle from '../PageTitle/PageTitle';
+import Swal from 'sweetalert2';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -15,22 +15,38 @@ const MyToys = () => {
             })
     }, [user])
     const handleDelete = (id) => {
-        const proceed = confirm('Are you sure you want to delete?')
-        if (proceed) {
-            fetch(`https://server-site-pi.vercel.app/mytoys/${id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    // console.log(data)
-                    if (data.deletedCount > 0) {
-                        alert('Deleted succesfull');
-                        const remaining = toys.filter(toy => toy._id !== id)
-                        setToys(remaining)
-                    }
+
+
+
+        // console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://server-site-pi.vercel.app/mytoys/${id}`, {
+                    method: 'DELETE'
                 })
-            // console.log(id);
-        }
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data)
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Toy has been deleted.',
+                                'success'
+                              )
+                            const remaining = toys.filter(toy => toy._id !== id)
+                            setToys(remaining)
+                        }
+                    })
+            }
+        })
     }
     //ascinding sort
     const handleAscinding = () => {
@@ -56,7 +72,7 @@ const MyToys = () => {
 
             <button onClick={handleAscinding} className='border py-2 px-4 m-2 bg-gray-500 hover:bg-black hover:text-white rounded-lg '>Ascinding</button>
             <button onClick={handleDescending} className='border py-2 px-4 m-2 bg-gray-500 hover:bg-black hover:text-white rounded-lg '>Descending</button>
-           
+
 
 
             <div className="overflow-x-auto mb-5">

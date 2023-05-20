@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import pic from '../../assets/registation.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import PageTitle from '../PageTitle/PageTitle';
 
@@ -8,6 +8,7 @@ const Register = () => {
     const { creteUser, createUserGoogle, updateUserProfile, done } = useContext(AuthContext)
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+    const navigate = useNavigate();
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -49,6 +50,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 setSuccess("REGISTER COMPLETE SUCCESSFULLY");
+                navigate('/', { replace: true });
 
             })
             .catch(error => {
@@ -67,7 +69,7 @@ const Register = () => {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
-                    <h1 className=' text-green-700 text-center font-bold text-3xl my-4'> {done}</h1>
+                        <h1 className=' text-green-700 text-center font-bold text-3xl my-4'> {done}</h1>
                         <h1 className="text-5xl font-bold">Register now!</h1>
                         <form onSubmit={handleRegister}>
                             <div className="form-control">

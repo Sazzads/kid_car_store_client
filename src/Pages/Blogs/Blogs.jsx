@@ -3,11 +3,15 @@ import PageTitle from '../PageTitle/PageTitle';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+
+
 const Blogs = () => {
+    
     return (
         <div className='px-5'>
             <PageTitle title="Blog"></PageTitle>
             <h2 className='text-center text-5xl font-bold mt-10'>Blog Questions</h2>
+           
             <Tabs className="max-w-7xl mx-auto my-14 mb-48">
                 <TabList className="text-center">
                     <Tab>Question-1</Tab>

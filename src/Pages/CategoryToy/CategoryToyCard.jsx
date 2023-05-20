@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const CategoryToyCard = ({ toy }) => {
+    const { user } = useContext(AuthContext);
+
+    // const { a, setA } = useState({user})
+    const handleAlert = (id) => {
+        if (!user) {
+            Swal.fire({
+                title: 'Login Alert',
+                text: "You Need To Login",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Swal.fire(
+                    //     'Deleted!',
+                    //     'Your file has been deleted.',
+                    //     'success'
+                    // )
+                }
+            })
+        }
+    }
     return (
         <div>
             <div className="card card-compact w-full bg-base-100 shadow-xl">
@@ -10,8 +37,11 @@ const CategoryToyCard = ({ toy }) => {
                     <h2 className="card-title">{toy.name}!</h2>
                     <p>Price: {toy.price}</p>
                     <p>rating: {toy.rating}</p>
-                    <div className="card-actions justify-end">
+                    {/* <div className="card-actions justify-end">
                         <Link className='btn' to={`/toy/${toy._id}`}>View Details</Link>
+                    </div> */}
+                    <div  className="card-actions justify-end">
+                        <Link onClick={() => handleAlert(toy._id)} className='btn' to={`/toy/${toy._id}`}>View Details</Link>
                     </div>
                 </div>
             </div>

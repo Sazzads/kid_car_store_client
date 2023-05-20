@@ -13,7 +13,7 @@ import PageTitle from '../PageTitle/PageTitle';
 const Home = () => {
     return (
         <div className=''>
-            <PageTitle title="Home"></PageTitle>
+            <PageTitle title="Kid Car Store"></PageTitle>
             {/* banner start  */}
             <div className="carousel w-full h-[750px]">
                 <div id="slide1" className="carousel-item relative w-full ">

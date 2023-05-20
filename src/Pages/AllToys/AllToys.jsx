@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
 import './AllToys.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AllToys = () => {
     const [allToys, setAllToys] = useState([])
     const [searchText, setSearchText] = useState("")
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(20);
+    const notify = () => toast("View Details");
 
     // useEffect(() => {
     //     fetch("https://server-site-pi.vercel.app/alltoys")
@@ -55,6 +58,7 @@ const AllToys = () => {
         <>
             <div className='max-w-7xl mx-auto'>
                 <PageTitle title="All Toys"></PageTitle>
+                <ToastContainer />
                 <h2 className='text-center text-6xl font-bold mt-10'>AllToys</h2>
                 <div className="text-right my-5">
                     <input
@@ -83,14 +87,14 @@ const AllToys = () => {
                         </thead>
 
                         {
-                            allToys.map(toy => <tbody key={toy?._id}>
+                            allToys?.map(toy => <tbody key={toy?._id}>
                                 <tr>
                                     <th>{toy?.sellerName}</th>
                                     <td>{toy?.name}</td>
                                     <td>{toy?.category}</td>
                                     <td>{toy?.price}</td>
                                     <td>{toy?.quantity}</td>
-                                    <td><Link className='btn' to={`/toy/${toy._id}`}>View Details</Link></td>
+                                    <td onClick={notify}><Link className='btn' to={`/toy/${toy._id}`}>View Details</Link></td>
 
                                 </tr>
                             </tbody>)
