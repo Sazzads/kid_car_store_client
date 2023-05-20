@@ -5,7 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import PageTitle from '../PageTitle/PageTitle';
 
 const Register = () => {
-    const { creteUser, createUserGoogle, updateUserProfile, done } = useContext(AuthContext)
+    const { creteUser, createUserGoogle, updateUserProfile, show } = useContext(AuthContext)
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const navigate = useNavigate();
@@ -30,8 +30,8 @@ const Register = () => {
                 console.log(createdUser);
                 setError('')
                 event.target.reset();
-                // updateUserdata(result.user,name,photo)
-                setSuccess("REGISTER COMPLETE SUCCESSFULLY");
+
+                setSuccess("REGISTER IS COMPLETED SUCCESSFULLY");
                 updateUserProfile(name, photo)
 
             })
@@ -49,7 +49,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setSuccess("REGISTER COMPLETE SUCCESSFULLY");
+                setSuccess("REGISTER IS COMPLETED SUCCESSFULLY");
                 navigate('/', { replace: true });
 
             })
@@ -61,15 +61,14 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
-            <PageTitle title="Register"></PageTitle>
+            <PageTitle title="Kid Car Store | Register"></PageTitle>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="ml-12 w-1/2">
-
                     <img src={pic} alt="image" />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
-                        <h1 className=' text-green-700 text-center font-bold text-3xl my-4'> {done}</h1>
+                        <h1 className=' text-green-700 text-center  text-3xl font-bold my-4'> {show}</h1>
                         <h1 className="text-5xl font-bold">Register now!</h1>
                         <form onSubmit={handleRegister}>
                             <div className="form-control">
@@ -101,10 +100,10 @@ const Register = () => {
                                 <input className="btn btn-primary" type="submit" value="Register" />
                             </div>
                         </form>
-                        <p className='my-5 text-center'>Already Have an Account?<Link to='/login' className='text-orange-600 font-bold' >Login</Link></p>
+                        <p className='my-5 text-center'>Already Have an Account? Go To <Link to='/login' className='text-orange-600 font-bold' >Login</Link></p>
                         <button onClick={handleGoogleLogin} className='btn'>Google</button>
                     </div>
-                    <p className=' text-red-700 mb-4'>{error}</p>
+                    <p className=' text-red-700 mb-3'>{error}</p>
                 </div>
             </div>
         </div>

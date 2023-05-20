@@ -23,9 +23,7 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        {/* <li className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </li> */}
+                      
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/blogs'>Blogs</Link></li>
                         <li><Link to='/alltoys'>All Toys</Link></li>
@@ -35,9 +33,9 @@ const Header = () => {
                         }
                     </ul>
                 </div>
-                <div className='flex'>
-                    <img src={logo} className='h-10' alt="logo" />
-                    <a className="btn btn-ghost normal-case text-xl [color:#eb4034]" >Kid Car Store</a>
+                <div className='flex '>
+                    <img src={logo} className='h-10 ' alt="logo" />
+                    <a className="btn btn-ghost normal-case text-sm md:text-xl [color:#eb4034] hidden sm:block" >Kid Car Store</a>
                 </div>
             </div>
 
@@ -50,9 +48,7 @@ const Header = () => {
                         user && <><li><Link to='/mytoys'>My Toys</Link></li>
                             <li><Link to='/addtoy'>Add A Toy</Link></li></>
                     }
-                    {/* <li className="w-12 rounded-full">
-                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </li> */}
+                 
                 </ul>
             </div>
 

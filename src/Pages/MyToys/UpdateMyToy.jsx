@@ -48,7 +48,7 @@ const UpdateMyToy = () => {
     }
     return (
         <div>
-            <PageTitle title="Update Toy"></PageTitle>
+            <PageTitle title="Kid Car Store | Update Toy"></PageTitle>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
 

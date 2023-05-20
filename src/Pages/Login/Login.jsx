@@ -22,7 +22,7 @@ const Login = () => {
         console.log(email, password);
 
         if (password.length < 6) {
-            setError('Please add at least 6 cherecters');
+            setError('Please add at least 6 characters');
             return;
         }
 
@@ -53,7 +53,7 @@ const Login = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200">
-            <PageTitle title="Login"></PageTitle>
+            <PageTitle title="Kid Car Store | Login"></PageTitle>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="ml-12 w-1/2">
 

@@ -4,26 +4,56 @@ import toypic from '../../assets/toy.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import PageTitle from '../PageTitle/PageTitle';
+import Swal from 'sweetalert2';
 
 const AddToy = () => {
     const { user } = useContext(AuthContext);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
-        fetch("https://server-site-pi.vercel.app/postToy", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-        })
-        .then(res=>res.json())
-        .then(result=>{
-            console.log(result);
-        })
+        // fetch("https://server-site-pi.vercel.app/postToy", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(data),
+        // })
+        // .then(res=>res.json())
+        // .then(result=>{
+        //     console.log(result);
+        // })
         console.log(data);
+        Swal.fire({
+            title: 'Are you sure want to add toy?',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch("https://server-site-pi.vercel.app/postToy", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        Swal.fire(
+                            'Added!',
+                            'Your Toy has been Addec.',
+                            'success'
+                          )
+                            console.log(result);
+                        
+
+                    })
+            }
+        })
+
+
     }
+
     return (
         <div>
-            <PageTitle title="Add Toy"></PageTitle>
+            <PageTitle title="Kid Car Store | Add Toy"></PageTitle>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
 
@@ -112,22 +142,6 @@ const AddToy = () => {
 
                 </div>
             </div>
-
-            {/* <form onSubmit={handleSubmit(onSubmit)}>
-
-                <input defaultValue="test" {...register("example")} />
-
-                <input {...register("firstName")} />
-
-                <select {...register("gender")}>
-                    <option value="female">female</option>
-                    <option value="male">male</option>
-                    <option value="other">other</option>
-                </select>
-
-                <input type="submit" />
-
-            </form> */}
         </div>
     );
 };

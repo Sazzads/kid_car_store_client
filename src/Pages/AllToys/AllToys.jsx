@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
-import './AllToys.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -38,7 +37,7 @@ const AllToys = () => {
 
     const pageNumbers = [...Array(totalPages).keys()];
 
-    const options = [5, 10, 20];
+    const options = [5, 10,15, 20];
     function handleSelectChange(event) {
         setItemsPerPage(parseInt(event.target.value));
         setCurrentPage(0);
@@ -57,9 +56,9 @@ const AllToys = () => {
     return (
         <>
             <div className='max-w-7xl mx-auto'>
-                <PageTitle title="All Toys"></PageTitle>
+                <PageTitle title="Kid Car Store | All Toys"></PageTitle>
                 <ToastContainer />
-                <h2 className='text-center text-6xl font-bold mt-10'>AllToys</h2>
+                <h2 className='text-center text-6xl font-bold mt-10'>All Toys</h2>
                 <div className="text-right my-5">
                     <input
                         onChange={(e) => setSearchText(e.target.value)}
@@ -102,12 +101,11 @@ const AllToys = () => {
                     </table>
                 </div>
             </div>
-            {/* pagination  */}
+            {/* pagination show 20 data per page  */}
             <div className='pagination text-center mb-14'>
-                <p>Current Page: {currentPage}</p>
                 {
-                    pageNumbers.map(number => <button className={currentPage === number ? 'selected mx-1 my-3 px-2' : 'mx-1 px-2 my-3'} key={number} onClick={() => setCurrentPage(number)}>{number + 1}</button>)
-                }
+                    pageNumbers.map(number => <button className={currentPage === number ? 'bg-red-500 mx-1 my-3 px-2 rounded-md ' : 'mx-1 px-2 my-3 rounded-md '} key={number} onClick={() => setCurrentPage(number)}>{number + 1}</button>)
+                }Show by
                 <select value={itemsPerPage} onChange={handleSelectChange}>
                     {
                         options.map(option => (
@@ -116,8 +114,10 @@ const AllToys = () => {
                             </option>
                         ))
                     }
+                    
 
                 </select>
+                per page
             </div>
         </>
     );

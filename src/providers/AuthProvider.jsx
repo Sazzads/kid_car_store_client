@@ -6,7 +6,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-    const [done, setDone] = useState('')
+    const [show, setShow] = useState('')
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
     const creteUser = (email, password) => {
@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
             photoURL: photo
         }).then(() => {
             console.log("Profile updated successfully.");
-            setDone("REGISTER COMPLETE SUCCESSFULLY");
+            setShow("REGISTER IS COMPLETED SUCCESSFULLY");
         }).catch((error) => {
             console.log("Error updating profile: ", error);
         });
@@ -34,14 +34,15 @@ const AuthProvider = ({ children }) => {
             return unsubscribe();
         }
     }, [])
-    //google registation
+    //google register
     const createUserGoogle = () => {
         setLoading(true);
         return signInWithPopup(auth, provider);
 
     }
+    //google sign in
     const signIn = (email, password) => {
-        // setLoading(true)
+
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -52,7 +53,7 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         loading,
-        done,
+        show,
         creteUser,
         signIn,
         logOut,

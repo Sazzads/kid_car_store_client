@@ -11,20 +11,14 @@ const CategoryToyCard = ({ toy }) => {
     const handleAlert = (id) => {
         if (!user) {
             Swal.fire({
-                title: 'Login Alert',
-                text: "You Need To Login",
+                title: 'Login Alert!',
                 icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Login'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Swal.fire(
-                    //     'Deleted!',
-                    //     'Your file has been deleted.',
-                    //     'success'
-                    // )
+                text: "You Need To Login",
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
                 }
             })
         }
@@ -40,7 +34,7 @@ const CategoryToyCard = ({ toy }) => {
                     {/* <div className="card-actions justify-end">
                         <Link className='btn' to={`/toy/${toy._id}`}>View Details</Link>
                     </div> */}
-                    <div  className="card-actions justify-end">
+                    <div className="card-actions justify-end">
                         <Link onClick={() => handleAlert(toy._id)} className='btn' to={`/toy/${toy._id}`}>View Details</Link>
                     </div>
                 </div>

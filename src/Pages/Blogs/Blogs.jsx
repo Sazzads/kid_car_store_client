@@ -9,7 +9,7 @@ const Blogs = () => {
     
     return (
         <div className='px-5'>
-            <PageTitle title="Blog"></PageTitle>
+            <PageTitle title="Kid Car Store | Blog"></PageTitle>
             <h2 className='text-center text-5xl font-bold mt-10'>Blog Questions</h2>
            
             <Tabs className="max-w-7xl mx-auto my-14 mb-48">
