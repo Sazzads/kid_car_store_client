@@ -8,7 +8,7 @@ const CategoryToy = () => {
     const [allToys, setAllToys] = useState([])
     const [activeTab, setActiveTab] = useState("bus");
     useEffect(() => {
-        fetch(`http://localhost:5000/alltoys/${activeTab}`)
+        fetch(`https://server-site-pi.vercel.app/alltoys/${activeTab}`)
             .then(res => res.json())
             .then(result => {
                 setAllToys(result);

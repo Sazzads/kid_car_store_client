@@ -8,7 +8,7 @@ const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [toys, setToys] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/mytoys/${user?.email}`)
+        fetch(`https://server-site-pi.vercel.app/mytoys/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data);
@@ -17,7 +17,7 @@ const MyToys = () => {
     const handleDelete = (id) => {
         const proceed = confirm('Are you sure you want to delete?')
         if (proceed) {
-            fetch(`http://localhost:5000/mytoys/${id}`, {
+            fetch(`https://server-site-pi.vercel.app/mytoys/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -34,7 +34,7 @@ const MyToys = () => {
     }
     //ascinding sort
     const handleAscinding = () => {
-        fetch(`http://localhost:5000/mytoyascending/${user?.email}`)
+        fetch(`https://server-site-pi.vercel.app/mytoyascending/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data);
@@ -42,7 +42,7 @@ const MyToys = () => {
     }
     //Descending sort
     const handleDescending = () => {
-        fetch(`http://localhost:5000/mytoydescending/${user?.email}`)
+        fetch(`https://server-site-pi.vercel.app/mytoydescending/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data);
