@@ -1,5 +1,5 @@
 import React from 'react';
-import errorPic from '../../assets/error.png'
+import errorPic from '../../assets/errorPic.png'
 import { Link } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
 

@@ -9,7 +9,7 @@ const Login = () => {
     const { signIn, createUserGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const from = location.state?.from?.pathname || '/';
     const [error, setError] = useState("")
     const [errorAuth, setErrorAuth] = useState("")
@@ -19,13 +19,13 @@ const Login = () => {
         setError("");
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         if (password.length < 6) {
             setError('Please add at least 6 characters');
             return;
         }
-
+        //user login
         signIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
@@ -39,6 +39,7 @@ const Login = () => {
 
             })
     }
+    //google login
     const handleGoogleSignIn = (auth, provider) => {
         createUserGoogle(auth, provider)
             .then(result => {
@@ -73,16 +74,16 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" />
 
                             </div>
-                            <div className="form-control mt-6">
+                            <div className="form-control mt-5">
                                 <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
-                        <p className=' text-red-700 mb-4'>{error}</p>
-                        <p className=' text-red-700 mb-4'>{errorAuth}</p>
-                        <p className='my-5 text-center'>New to Kid Car Store?<Link className='text-orange-600 font-bold' to='/register'>Register</Link></p>
+                        <p className=' text-red-600 mb-3'>{error}</p>
+                        <p className=' text-red-600 mb-3'>{errorAuth}</p>
+                        <p className='my-5 text-center'>New to Kid Car Store? Please <Link className='text-orange-600 font-bold' to='/register'>Register</Link></p>
                         <button onClick={handleGoogleSignIn} className='btn'>Google</button>
 
                     </div>

@@ -18,19 +18,20 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo, email, password);
+        // console.log(name, photo, email, password);
+
 
         if (password.length < 6) {
-            setError('Please add at least 6 cherecters');
+            setError('Please add at least 6 characters');
             return;
         }
+        //user register
         creteUser(email, password)
             .then(result => {
                 const createdUser = result.user
                 console.log(createdUser);
                 setError('')
                 event.target.reset();
-
                 setSuccess("REGISTER IS COMPLETED SUCCESSFULLY");
                 updateUserProfile(name, photo)
 
@@ -43,7 +44,7 @@ const Register = () => {
 
     };
 
-    //google login
+    //google register
     const handleGoogleLogin = (auth, provider) => {
         createUserGoogle(auth, provider)
             .then(result => {
@@ -68,7 +69,8 @@ const Register = () => {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
-                        <h1 className=' text-green-700 text-center  text-3xl font-bold my-4'> {show}</h1>
+                        {/* <h1 className=' text-green-700 text-center  text-3xl font-bold my-4'> {show}</h1> */}
+                        <h1 className=' text-green-700 text-center  text-3xl font-bold my-4'> {success}</h1>
                         <h1 className="text-5xl font-bold">Register now!</h1>
                         <form onSubmit={handleRegister}>
                             <div className="form-control">
@@ -87,7 +89,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" />
 
                             </div>
                             <div className="form-control">
@@ -100,10 +102,10 @@ const Register = () => {
                                 <input className="btn btn-primary" type="submit" value="Register" />
                             </div>
                         </form>
-                        <p className='my-5 text-center'>Already Have an Account? Go To <Link to='/login' className='text-orange-600 font-bold' >Login</Link></p>
+                        <p className='my-5 text-center'>Already Have an Account? Please <Link to='/login' className='text-orange-600 font-bold' >Login</Link></p>
                         <button onClick={handleGoogleLogin} className='btn'>Google</button>
                     </div>
-                    <p className=' text-red-700 mb-3'>{error}</p>
+                    <p className=' text-red-600 mb-3'>{error}</p>
                 </div>
             </div>
         </div>
