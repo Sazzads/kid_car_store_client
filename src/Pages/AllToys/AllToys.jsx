@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const AllToys = () => {
     const [allToys, setAllToys] = useState([])
     const [searchText, setSearchText] = useState("")
     const [currentPage, setCurrentPage] = useState(0);
-    const [itemsPerPage, setItemsPerPage] = useState(20);
-    const notify = () => toast("View Details");
+    const { user } = useContext(AuthContext);
 
-    // useEffect(() => {
-    //     fetch("https://server-site-pi.vercel.app/alltoys")
-    //         .then(res => res.json())
-    //         .then(result => {
-    //             setAllToys(result);
-    //         })
-    // }, [])
+    const notify = () => {
+        if (!user) {
+            toast("You Need To Login.....");
+        }
+    }
+
+    const itemsPerPage = 20;
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(`https://server-site-pi.vercel.app/alltoyss?page=${currentPage}&limit=${itemsPerPage}`);
-
             const data = await response.json();
             setAllToys(data);
         }
@@ -34,23 +33,14 @@ const AllToys = () => {
     // console.log(totalToys);
 
     const totalPages = Math.ceil(totalToys / itemsPerPage)
-
     const pageNumbers = [...Array(totalPages).keys()];
-
-    const options = [5, 10,15, 20];
-    function handleSelectChange(event) {
-        setItemsPerPage(parseInt(event.target.value));
-        setCurrentPage(0);
-    }
-
-
 
     const handleSearch = () => {
         fetch(`https://server-site-pi.vercel.app/toySearchByName/${searchText}`)
             .then(res => res.json())
             .then(data => {
                 setAllToys(data)
-                console.log(data);
+                // console.log(data);
             })
     }
     return (
@@ -93,7 +83,8 @@ const AllToys = () => {
                                     <td>{toy?.category}</td>
                                     <td>{toy?.price}</td>
                                     <td>{toy?.quantity}</td>
-                                    <td onClick={notify}><Link className='btn' to={`/toy/${toy._id}`}>View Details</Link></td>
+                                    <td onClick={() => notify(toy._id)}><Link className='btn' to={`/toy/${toy._id}`}>View Details</Link></td>
+                                    {/* <Link onClick={() => handleAlert(toy._id)} className='btn' to={`/toy/${toy._id}`}>View Details</Link> */}
 
                                 </tr>
                             </tbody>)
@@ -101,23 +92,14 @@ const AllToys = () => {
                     </table>
                 </div>
             </div>
-            {/* pagination show 20 data per page  */}
+            {/* Show 20 results by default  */}
             <div className='pagination text-center mb-14'>
+                Page :
                 {
-                    pageNumbers.map(number => <button className={currentPage === number ? 'bg-red-500 mx-1 my-3 px-2 rounded-md ' : 'mx-1 px-2 my-3 rounded-md '} key={number} onClick={() => setCurrentPage(number)}>{number + 1}</button>)
-                }Show by
-                <select value={itemsPerPage} onChange={handleSelectChange}>
-                    {
-                        options.map(option => (
-                            <option key={option} value={option}>
-                                {option}
-                            </option>
-                        ))
-                    }
-                    
+                    pageNumbers.map(number => <button className={currentPage === number ? 'bg-gray-500 mx-1 py-1 my-3 px-5 rounded-md ' : 'mx-1 py-1 px-5 my-3 rounded-md '} key={number} onClick={() => setCurrentPage(number)}>{number + 1}</button>)
+                }
 
-                </select>
-                per page
+
             </div>
         </>
     );

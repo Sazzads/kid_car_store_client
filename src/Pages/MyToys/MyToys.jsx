@@ -3,6 +3,8 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
 import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -65,11 +67,18 @@ const MyToys = () => {
             })
     }
 
+    //alert
+    const notify=(id)=>{
+        toast("You Are Going to update.....")
+        // console.log(id);
+    }
+
     return (
         <div className='max-w-7xl mx-auto'>
             <PageTitle title="Kid Car Store | My Toy"></PageTitle>
+           
             <h2 className='text-center text-6xl font-bold my-10'>My Toys</h2>
-
+            <ToastContainer />
             <button onClick={handleAscinding} className='border py-2 px-4 m-2 bg-gray-500 hover:bg-black hover:text-white rounded-lg '>Ascinding</button>
             <button onClick={handleDescending} className='border py-2 px-4 m-2 bg-gray-500 hover:bg-black hover:text-white rounded-lg '>Descending</button>
 
@@ -100,7 +109,7 @@ const MyToys = () => {
                                 <td>{toy?.category}</td>
                                 <td>{toy?.price}</td>
                                 <td>{toy?.quantity}</td>
-                                <td><Link className='btn' to={`/updatemytoy/${toy._id}`}>Update</Link> </td>
+                                <td onClick={()=>notify(toy._id)}><Link className='btn' to={`/updatemytoy/${toy._id}`}>Update</Link> </td>
                                 <td onClick={() => handleDelete(toy._id)}><button className='btn'>X</button></td>
                             </tr>
                         </tbody>)

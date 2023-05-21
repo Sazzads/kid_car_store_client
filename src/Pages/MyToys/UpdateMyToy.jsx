@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import toypic from '../../assets/toy.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
@@ -97,7 +96,7 @@ const UpdateMyToy = () => {
                                     <label className="label">
                                         <span className="label-text">Description</span>
                                     </label>
-                                    <input type="text" {...register("description")} placeholder="Description" className="input input-bordered" />
+                                    <input type="text" defaultValue={description} {...register("description")} placeholder="Description" className="input input-bordered" />
                                 </div>
 
                                 <div className="form-control mt-6">
