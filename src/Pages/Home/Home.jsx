@@ -6,6 +6,7 @@ import banner4 from '../../assets/banner4.jpeg'
 import offerPic from '../../assets/offer.png'
 
 import Gallary from './Gallary';
+import DayDeal from './DayDeal';
 import CategoryToy from '../CategoryToy/CategoryToy';
 import PageTitle from '../PageTitle/PageTitle';
 // bg-gradient-to-r from-[#151515] to-[rgba(21,21,21, 0)]
@@ -109,6 +110,7 @@ const Home = () => {
                 <CategoryToy></CategoryToy>
             </div>
             {/* toys section end  */}
+            <DayDeal ></DayDeal>
             {/* contact us section  */}
             <div className='max-w-7xl mx-auto'>
                 <div className="divider"></div>
